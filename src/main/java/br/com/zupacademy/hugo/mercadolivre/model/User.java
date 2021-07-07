@@ -1,6 +1,8 @@
 package br.com.zupacademy.hugo.mercadolivre.model;
 
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,7 +12,6 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -30,8 +31,12 @@ public class User {
     public User() {
     }
 
+    /*
+     * @param email string em formato de email
+     * @param senha string em texto limpo
+     */
     public User(@Valid String email, String password) {
         this.email = email;
-        this.password = password;
+        this.password = new BCryptPasswordEncoder().encode(password);
     }
 }
