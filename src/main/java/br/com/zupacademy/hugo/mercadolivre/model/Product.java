@@ -54,4 +54,8 @@ public class Product {
     public boolean isOwner(User owner) {
         return this.owner.equals(owner);
     }
+
+    public User getOwner() {
+        return owner;
+    }
 }
