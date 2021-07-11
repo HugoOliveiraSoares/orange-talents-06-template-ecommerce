@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -27,7 +28,7 @@ public class ImageController {
     private ProductRepository productRepository;
 
     @PostMapping
-    public ResponseEntity<?> register(@PathVariable Long id, @RequestBody @Valid ImagesFORM imagesFORM,
+    public ResponseEntity<?> register(@PathVariable Long id, @Valid ImagesFORM imagesFORM,
                                       @AuthenticationPrincipal User owner){
 
         Optional<Product> product = productRepository.findById(id);
@@ -39,8 +40,8 @@ public class ImageController {
                 throw new ResponseStatusException(HttpStatus.FORBIDDEN);
             }
 
-            Images images = imagesFORM.convert(product.get());
-            imageRepository.save(images);
+            List<Images> images = imagesFORM.convert(product.get());
+            imageRepository.saveAll(images);
 
             return ResponseEntity.ok().build();
         }

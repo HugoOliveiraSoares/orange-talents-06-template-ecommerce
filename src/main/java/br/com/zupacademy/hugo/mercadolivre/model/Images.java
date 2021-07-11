@@ -1,6 +1,7 @@
 package br.com.zupacademy.hugo.mercadolivre.model;
 
 import javax.persistence.*;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
@@ -14,7 +15,7 @@ public class Images {
     private Long id;
     @NotNull @Size(min = 1)
     private String linkImage;
-    @NotNull @OneToOne
+    @NotNull @OneToOne @Valid
     private Product product;
 
     @Deprecated
@@ -24,10 +25,6 @@ public class Images {
     public Images(String linkImage, Product product) {
         this.linkImage = linkImage;
         this.product = product;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public String getLinkImage() {
