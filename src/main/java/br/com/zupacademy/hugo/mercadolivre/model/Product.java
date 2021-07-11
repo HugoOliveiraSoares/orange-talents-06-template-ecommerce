@@ -50,4 +50,8 @@ public class Product {
         this.features.addAll( features.stream().map(feature -> feature.convert(this)).collect(Collectors.toSet()) );
         this.owner = owner;
     }
+
+    public boolean isOwner(User owner) {
+        return this.owner.equals(owner);
+    }
 }

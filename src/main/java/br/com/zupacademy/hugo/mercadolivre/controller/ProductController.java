@@ -1,14 +1,10 @@
 package br.com.zupacademy.hugo.mercadolivre.controller;
 
 import br.com.zupacademy.hugo.mercadolivre.controller.form.ProductForm;
-import br.com.zupacademy.hugo.mercadolivre.controller.form.UserFORM;
-import br.com.zupacademy.hugo.mercadolivre.model.Features;
 import br.com.zupacademy.hugo.mercadolivre.model.Product;
 import br.com.zupacademy.hugo.mercadolivre.model.User;
 import br.com.zupacademy.hugo.mercadolivre.repository.CategoryRepository;
-import br.com.zupacademy.hugo.mercadolivre.repository.FeaturesRepository;
 import br.com.zupacademy.hugo.mercadolivre.repository.ProductRepository;
-import br.com.zupacademy.hugo.mercadolivre.repository.UserRepository;
 import br.com.zupacademy.hugo.mercadolivre.validation.UniqueFeature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
