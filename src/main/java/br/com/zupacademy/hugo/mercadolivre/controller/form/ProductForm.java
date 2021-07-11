@@ -34,13 +34,13 @@ public class ProductForm {
     private String category;
 
 
-    public Product convert(CategoryRepository categoryRepository){
+    public Product convert(CategoryRepository categoryRepository, User owner){
 
         Category category = categoryRepository.findByName(this.category);
         Assert.notNull(category, "Categoria não encontrada!");
 
 
-        return new Product(this.name, this.price, this.quantity, this.description, this.features, category);
+        return new Product(this.name, this.price, this.quantity, this.description, this.features, category, owner);
 
     }
 

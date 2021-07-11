@@ -1,6 +1,7 @@
 package br.com.zupacademy.hugo.mercadolivre.controller;
 
 import br.com.zupacademy.hugo.mercadolivre.controller.form.ProductForm;
+import br.com.zupacademy.hugo.mercadolivre.controller.form.UserFORM;
 import br.com.zupacademy.hugo.mercadolivre.model.Features;
 import br.com.zupacademy.hugo.mercadolivre.model.Product;
 import br.com.zupacademy.hugo.mercadolivre.model.User;
@@ -33,9 +34,9 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<?> register(@RequestBody @Valid ProductForm productForm){
+    public ResponseEntity<?> register(@RequestBody @Valid ProductForm productForm, @AuthenticationPrincipal User owner){
 
-        Product product = productForm.convert(categoryRepository);
+        Product product = productForm.convert(categoryRepository, owner);
 
         productRepository.save(product);
 

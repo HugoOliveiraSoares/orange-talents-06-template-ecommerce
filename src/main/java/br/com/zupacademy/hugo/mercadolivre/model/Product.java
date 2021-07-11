@@ -34,17 +34,20 @@ public class Product {
     @NotNull @ManyToOne
     private Category category;
     private LocalDateTime instant = LocalDateTime.now();
+    @NotNull @Valid @ManyToOne
+    private User owner;
 
     @Deprecated
     public Product() {
     }
 
-    public Product(@Valid String name, Integer price, Integer quantity, String description, Collection<FeaturesFORM> features, Category category) {
+    public Product(@Valid String name, Integer price, Integer quantity, String description, Collection<FeaturesFORM> features, Category category, User owner) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
         this.description = description;
         this.category = category;
         this.features.addAll( features.stream().map(feature -> feature.convert(this)).collect(Collectors.toSet()) );
+        this.owner = owner;
     }
 }
