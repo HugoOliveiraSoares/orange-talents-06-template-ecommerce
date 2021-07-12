@@ -48,16 +48,7 @@ public class PurchaseController {
         purchaseRepository.save(purchase);
         mailer.sendEmailPurchase(purchase.getProduct().getOwner().getEmail(), purchase.getBuyer().getEmail(), purchase.getStatusPurchase());
 
-        if (purchase.getGateway().equals(Gateway.paypal)){
-            String returnUri = uriComponentsBuilder.path("paypal").buildAndExpand(purchase.getId()).toString();
-            String uri = "paypal.com?buyerId=" + purchase.getId() + "&redirectUrl="+returnUri;
-            return ResponseEntity.ok().body(uri);
-
-        }else {
-            String returnUri = uriComponentsBuilder.path("pagseguro").buildAndExpand(purchase.getId()).toString();
-            String uri = "pagseguro.com?buyerId=" + purchase.getId() + "&redirectUrl="+returnUri;
-            return ResponseEntity.ok().body(uri);
-        }
+        return ResponseEntity.ok().body(purchase.redirectURI(uriComponentsBuilder));
 
     }
 

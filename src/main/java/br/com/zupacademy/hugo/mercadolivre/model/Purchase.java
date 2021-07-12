@@ -1,5 +1,7 @@
 package br.com.zupacademy.hugo.mercadolivre.model;
 
+import org.springframework.web.util.UriComponentsBuilder;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -61,15 +63,9 @@ public class Purchase {
         return statusPurchase;
     }
 
-    @Override
-    public String toString() {
-        return "Purchase{" +
-                "item='" + item + '\'' +
-                ", quant=" + quant +
-                ", product=" + product.getName() +
-                ", buyer=" + buyer.getEmail() +
-                ", gateway=" + gateway +
-                '}';
+    public String redirectURI(UriComponentsBuilder uriComponentsBuilder){
+
+        return this.gateway.createURI(this, uriComponentsBuilder);
     }
 
 }
