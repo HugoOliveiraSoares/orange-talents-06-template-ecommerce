@@ -55,6 +55,34 @@ public class Product {
         return this.owner.equals(owner);
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Set<Features> getFeatures() {
+        return features;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public LocalDateTime getInstant() {
+        return instant;
+    }
+
     public User getOwner() {
         return owner;
     }

@@ -35,5 +35,22 @@ public class Coments {
         this.description = description;
         this.user = user;
         this.product = product;
+
+    }
+
+    public Integer getNote() {
+        return note;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public User getUser() {
+        return user;
     }
 }

@@ -42,4 +42,16 @@ public class Question {
         System.out.println(this.question);
 
     }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getQuestion() {
+        return question;
+    }
+
+    public User getQuestioner() {
+        return questioner;
+    }
 }
