@@ -36,13 +36,6 @@ public class Question {
         this.questioner = questioner;
     }
 
-    public void sendEmail() {
-
-        System.out.println(this.ownerProduct.getEmail());
-        System.out.println(this.question);
-
-    }
-
     public String getTitle() {
         return title;
     }
@@ -53,5 +46,9 @@ public class Question {
 
     public User getQuestioner() {
         return questioner;
+    }
+
+    public User getOwnerProduct() {
+        return ownerProduct;
     }
 }
