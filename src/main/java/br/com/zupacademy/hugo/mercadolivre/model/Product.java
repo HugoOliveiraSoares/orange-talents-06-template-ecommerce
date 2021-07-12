@@ -55,6 +55,16 @@ public class Product {
         return this.owner.equals(owner);
     }
 
+    public boolean destock(@Positive int quantity){
+        Assert.isTrue(quantity > 0, "A quantidade deve ser maior do que 0");
+
+        if (this.quantity >= quantity) {
+            this.quantity -= quantity;
+            return true;
+        }
+        return false;
+    }
+
     public String getName() {
         return name;
     }
