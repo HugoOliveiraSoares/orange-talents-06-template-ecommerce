@@ -1,12 +1,13 @@
-package br.com.zupacademy.hugo.mercadolivre.model;
+package br.com.zupacademy.hugo.mercadolivre.enums;
 
+import br.com.zupacademy.hugo.mercadolivre.model.Purchase;
 import org.springframework.web.util.UriComponentsBuilder;
 
 public enum Gateway {
 
     pagseguro{
         @Override
-        String createURI(Purchase purchase, UriComponentsBuilder uriComponentsBuilder) {
+        public String createURI(Purchase purchase, UriComponentsBuilder uriComponentsBuilder) {
             String uri = uriComponentsBuilder
                     .path("/pagseguro/{id}")
                     .buildAndExpand(purchase.getId()).toString();
@@ -17,7 +18,7 @@ public enum Gateway {
     },
     paypal{
         @Override
-        String createURI(Purchase purchase, UriComponentsBuilder uriComponentsBuilder){
+        public String createURI(Purchase purchase, UriComponentsBuilder uriComponentsBuilder){
             String uri = uriComponentsBuilder
                     .path("/paypal/{id}")
                     .buildAndExpand(purchase.getId()).toString();
@@ -27,7 +28,7 @@ public enum Gateway {
         }
     };
 
-    abstract String createURI(Purchase purchase,
+    public abstract String createURI(Purchase purchase,
                     UriComponentsBuilder uriComponentsBuilder);
 
 }
