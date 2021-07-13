@@ -1,11 +1,14 @@
 package br.com.zupacademy.hugo.mercadolivre.model;
 
+import br.com.zupacademy.hugo.mercadolivre.enums.Gateway;
+import br.com.zupacademy.hugo.mercadolivre.enums.StatusPayment;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
+import java.time.LocalDateTime;
 
 @Entity
 public class Purchase {
@@ -23,16 +26,14 @@ public class Purchase {
     private User buyer;
     @Enumerated @NotNull
     private Gateway gateway;
-    @Enumerated @NotNull
-    private StatusPurchase statusPurchase;
+    private LocalDateTime instatCreation = LocalDateTime.now();
 
-    public Purchase(Product product, int quant, User buyer, Gateway gateway, StatusPurchase statusPurchase) {
+    public Purchase(Product product, int quant, User buyer, Gateway gateway) {
         this.item = product.getName();
         this.quant = quant;
         this.product = product;
         this.buyer = buyer;
         this.gateway = gateway;
-        this.statusPurchase = statusPurchase;
     }
 
     public Long getId() {
@@ -59,8 +60,8 @@ public class Purchase {
         return gateway;
     }
 
-    public StatusPurchase getStatusPurchase() {
-        return statusPurchase;
+    public LocalDateTime getInstatCreation() {
+        return instatCreation;
     }
 
     public String redirectURI(UriComponentsBuilder uriComponentsBuilder){

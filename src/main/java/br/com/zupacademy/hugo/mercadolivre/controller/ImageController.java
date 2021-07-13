@@ -32,7 +32,6 @@ public class ImageController {
                                       @AuthenticationPrincipal User owner){
 
         Optional<Product> product = productRepository.findById(id);
-        System.out.println(owner.getEmail());
 
         if (product.isPresent()){
 

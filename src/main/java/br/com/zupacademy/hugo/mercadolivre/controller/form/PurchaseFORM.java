@@ -1,5 +1,7 @@
 package br.com.zupacademy.hugo.mercadolivre.controller.form;
 
+import br.com.zupacademy.hugo.mercadolivre.enums.Gateway;
+import br.com.zupacademy.hugo.mercadolivre.enums.StatusPayment;
 import br.com.zupacademy.hugo.mercadolivre.model.*;
 
 import javax.validation.constraints.NotEmpty;
@@ -23,7 +25,7 @@ public class PurchaseFORM {
 
     public Purchase convert(Product product, User buyer){
 
-        return new Purchase(product, this.quant, buyer, this.getGateway(), StatusPurchase.INICIADA);
+        return new Purchase(product, this.quant, buyer, this.getGateway());
 
     }
 

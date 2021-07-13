@@ -2,7 +2,6 @@ package br.com.zupacademy.hugo.mercadolivre.controller;
 
 import br.com.zupacademy.hugo.mercadolivre.components.Mailer;
 import br.com.zupacademy.hugo.mercadolivre.controller.form.PurchaseFORM;
-import br.com.zupacademy.hugo.mercadolivre.model.Gateway;
 import br.com.zupacademy.hugo.mercadolivre.model.Product;
 import br.com.zupacademy.hugo.mercadolivre.model.Purchase;
 import br.com.zupacademy.hugo.mercadolivre.model.User;
@@ -46,7 +45,7 @@ public class PurchaseController {
 
         Purchase purchase = purchaseFORM.convert(product.get(), buyer);
         purchaseRepository.save(purchase);
-        mailer.sendEmailPurchase(purchase.getProduct().getOwner().getEmail(), purchase.getBuyer().getEmail(), purchase.getStatusPurchase());
+        mailer.sendEmailPurchase(purchase.getProduct().getOwner().getEmail(), purchase.getBuyer().getEmail());
 
         return ResponseEntity.ok().body(purchase.redirectURI(uriComponentsBuilder));
 
