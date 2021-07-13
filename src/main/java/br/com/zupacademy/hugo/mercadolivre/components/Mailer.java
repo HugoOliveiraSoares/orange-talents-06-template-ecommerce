@@ -1,6 +1,5 @@
 package br.com.zupacademy.hugo.mercadolivre.components;
 
-import br.com.zupacademy.hugo.mercadolivre.enums.StatusPayment;
 import org.springframework.stereotype.Component;
 
 @Component

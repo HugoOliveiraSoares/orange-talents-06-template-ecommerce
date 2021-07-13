@@ -28,6 +28,10 @@ public class Purchase {
     private Gateway gateway;
     private LocalDateTime instatCreation = LocalDateTime.now();
 
+    @Deprecated
+    public Purchase() {
+    }
+
     public Purchase(Product product, int quant, User buyer, Gateway gateway) {
         this.item = product.getName();
         this.quant = quant;
